@@ -11,16 +11,18 @@ pipeline {
 
     stages {
         stage('Build') {
-            script{
+            
             steps {
+                script{
                 npm i
                 npm run build
             }
             }
         }
         stage('Test') {
-            script{
+            
             steps {
+                script{
                 npm i
                 npm run test
             }
