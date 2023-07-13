@@ -1,26 +1,38 @@
 pipeline {
     agent any
-    environment {
-        CI='true'
-    }
+    
 
     stages {
+        stage('init')
+        {
+            steps{
+              
+                    nodejs('Node'){
+                        sh 'yarn install'
+                    }
+                
+            }
+        }
         stage('Build') {
             
             steps {
-                script{
-                npm i
-                npm run build
+               
+                
+                nodejs('Node'){
+                       sh  'yarn build'
+                    }
             }
-            }
+            
         }
         stage('Test') {
             
             steps {
-                script{
-                npm i
-                npm run test
-            }
+             
+                
+                 nodejs('Node'){
+                        sh 'yarn test'
+                    }
+            
             }
             
         }
